@@ -1,8 +1,9 @@
 package laveberry.jdbc.domain;
 
+import lombok.Data;
 import lombok.Getter;
 
-@Getter
+@Data //equals hashCode toString 다 만들어줌
 public class Member {
     private String memberId;
     private int money;

@@ -13,7 +13,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /*
-* 트랜잭션 - 트랜잭션 매니저
+* 트랜잭션 - 트랜잭션 템플릿
 * */
 @Slf4j
 //@RequiredArgsConstructor
@@ -49,17 +49,6 @@ public class MemberServiceV3_2 {
         memberRepository.update(fromId, fromMember.getMoney() - money);
         validation(fromId, money, fromMember, toMember);
         memberRepository.update(toId, toMember.getMoney() + money);
-    }
-
-    private static void release(Connection con) {
-        if(con != null) {
-            try {
-                con.setAutoCommit(true); //커넥션 풀 고려해 원복
-                con.close();
-            } catch (Exception e) {
-                log.info("error message={}", "여기도 작성가능", e);
-            }
-        }
     }
 
     private void validation(String fromId, int money, Member fromMember, Member toMember) throws SQLException {

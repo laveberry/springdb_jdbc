@@ -3,6 +3,7 @@ package laveberry.jdbc.service;
 import laveberry.jdbc.domain.Member;
 import laveberry.jdbc.repository.MemberRepository;
 import laveberry.jdbc.repository.MemberRepositoryV4_1;
+import laveberry.jdbc.repository.MemberRepositoryV4_2;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
@@ -51,7 +52,8 @@ class MemberServiceV4Test {
 
         @Bean
         MemberRepository memberRepository() {
-            return new MemberRepositoryV4_1(dataSource);
+//            return new MemberRepositoryV4_1(dataSource);
+            return new MemberRepositoryV4_2(dataSource);
         }
         @Bean
         MemberServiceV4 memberServiceV4() {
